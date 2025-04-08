@@ -15,7 +15,7 @@ I will sing
 I will praise
 Lift my hands to honor You
 Because Your word is true
-I will sing`; // Removed trailing space
+I will sing`;
 
 let lyricUpper = favoriteLyric.toUpperCase();
 let lyricLower = favoriteLyric.toLowerCase();
