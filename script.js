@@ -1,73 +1,87 @@
-// 1. Create variables for name, age, and nationality, then create an introduction sentence
-let myName = "Opeyemi Akanni";
-let myAge = 31;
-let myNationality = "Nigerian";
-let introduction = `Hello, my name is ${myName}. I am ${myAge} years old and I am ${myNationality}.`;
+// 1. map() Practice
+// Doubles every number in the array
+const numbers = [1, 2, 3, 4, 5];
+const doubleNumb = numbers.map((num) => num * 2);
+console.log(doubleNumb); // [2, 4, 6, 8, 10]
 
-console.log(introduction);
+// 2. filter()
+// Filters ages 18 and above
+const ages = [12, 25, 17, 30, 15];
+const ageAbove = ages.filter((age) => age >= 18);
+console.log(ageAbove); // [25, 30]
 
-// 2. Favorite quote or lyric, convert to uppercase and lowercase
-let favoriteLyric = `I will sing
-I will praise
-Even in my darkest hour
-Through the sorrow and the pain
-I will sing
-I will praise
-Lift my hands to honor You
-Because Your word is true
-I will sing`;
+// 3. forEach()
+// Logs a welcome message for each student
+const students = ["Ali", "Bola", "Chidi"];
+students.forEach((student) => console.log(`Welcome ${student}`));
 
-let lyricUpper = favoriteLyric.toUpperCase();
-let lyricLower = favoriteLyric.toLowerCase();
-console.log(lyricUpper);
-console.log(lyricLower);
+// 4. Comparison Operators (== vs ===)
+// === checks both value and type, == checks value only
+const Jame = "14";
 
-// 3. Reverse a word and log it
-let word = myName; // Using myName variable for demonstration
-let reversedWord = word.split("").reverse().join("");
-console.log(reversedWord);
+if (Jame === 14) {
+  console.log("Welcome");
+} else if (Jame == 14) {
+  console.log("Stile Working");
+} else {
+  console.log("Good Work");
+}
 
-// 4. Store prices of 3 items, calculate total and display message
-let price1 = 13400;
-let price2 = 12500;
-let price3 = 11200;
-let totalPrice = price1 + price2 + price3;
-console.log("The total cost of your items is " + totalPrice.toFixed(2));
+if (Number(Jame) === 14) {
+  console.log("This is correct because we change it to number");
+}
 
-// 5. Find the average of 5 test scores and display the average
-let score1 = 85;
-let score2 = 90;
-let score3 = 78;
-let score4 = 88;
-let score5 = 92;
-let averageScore = (score1 + score2 + score3 + score4 + score5) / 5;
-console.log(`The average test score is ${averageScore}`);
+// 5. if/else Statement Practice
+// Determines if a number is even or odd
+const numb = 7;
+if (Number(numb) % 2 === 1) {
+  console.log(`${numb} : is an odd number`);
+} else {
+  console.log(`${numb} : Even number`);
+}
 
-// 6. Array of 5 favorite foods, display first and last items
-let favoriteFoods = [
-    "Jollof Rice", "Egusi Soup", "Suya", "Pounded Yam", "Moi Moi",
-];
+// 6. Using ! (Negation)
+// Flips each boolean value in the array
+const flags = [true, false, false, true];
+const newFlags = flags.map((flag) => !flag);
+console.log(newFlags); // [false, true, true, false]
 
-console.log(`First favorite food: ${favoriteFoods[0]}`);
-console.log(`Last favorite food: ${favoriteFoods[favoriteFoods.length - 1]}`);
+// 7. Function + filter() + map() Together
+// Filters names starting with "A" and returns them in uppercase
+const names = ["Anna", "Bob", "Andrew", "Bella"];
+const nameWithA = (arr) =>
+  arr.filter((name) => name.startsWith("A")).map((name) => name.toUpperCase());
+console.log(nameWithA(names)); // ["ANNA", "ANDREW"]
 
-// 7. Add one food to beginning and one to end, display the new list
-favoriteFoods.unshift("Akara"); // Add to the beginning
-favoriteFoods.push("Ofada Rice"); // Add to the end
+// 8. Practical Drug Example (filter + if/else)
+// Logs whether each drug is in low stock or in stock
+const checkDruginStock = (drugs) => {
+  drugs.filter((drug) => {
+    if (drug.stock < 50) {
+      console.log(`${drug.name}: Low Stock`);
+    } else {
+      console.log(`${drug.name}: In Stock`);
+    }
+  });
+};
 
-console.log("Updated favorite foods list: " + favoriteFoods);
+// 9. Count with forEach()
+// Counts how many drugs are from Pfizer
+let pfizer = 0;
+drugs.forEach((drug) => {
+  if (drug.manufacturer.toLowerCase() === "pfizer") {
+    pfizer++;
+  }
+});
+console.log(`Number of Pfizer drugs: ${pfizer}`);
 
+// 10. Using All Concepts Together
+// Returns drugs that match the category and have stock above a minimum value
+const getDrugbyCateandStock = (category, minStock) =>
+  drugs.filter(
+    (drug) =>
+      drug.category.toLowerCase() === category.toLowerCase() &&
+      drug.stock > minStock
+  );
 
-// 8, 9, 10. Create three arrays with 10 student names each
-let jssOne = [
-    "Tunde", "Kemi", "Bola", "Damilola", "Tope",
-    "Segun", "Yetunde", "Bukola", "Adebayo", "Funke",
-];
-
-let jssTwo = [
-    "David", "Grace", "Daniel", "Mary", "James",
-    "Ruth", "John", "Elizabeth", "Matthew", "Sarah"
-];
-let jssThree = [
-    "Amina", "Yusuf", "Fatima", "Ibrahim", "Sanni", "Halima", "Mustapha", "Zainab", "Abdulrahman", "Khadijah",
-];
+console.log(getDrugbyCateandStock("Antibiotic", 50));
